@@ -30,13 +30,11 @@ public class Author {
     @ToString.Exclude// To avoid duplicate the invocation of toString methods of each object
     // in the bi-directional relationship
     private List<Post> posts;
-
     public void addPost(Post post) {
         if (posts == null) {
             posts = new ArrayList<>();
         }
         posts.add(post);
-
     }
 
 }

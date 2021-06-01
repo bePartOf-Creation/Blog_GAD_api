@@ -6,6 +6,7 @@ truncate table post;
 truncate table author;
 truncate table comment;
 truncate table author_posts;
+truncate table post_comments;
 
 INSERT INTO post(id, title, content)
 VALUES(41, 'Title Post 1', 'Post content 1'),

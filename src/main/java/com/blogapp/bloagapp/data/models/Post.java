@@ -7,13 +7,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 @Entity
 @Table
 @Data
-
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,7 @@ public class Post {
     private  String title;
     @Column(length = 500)
     private String content;
+
     private String coverImageUrl;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -34,7 +36,23 @@ public class Post {
     @UpdateTimestamp
     private LocalDate dateModified;
 
-    @OneToMany
-    private List<Comment> comment;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Comment> comments;
+
+
+    public void addComments(Comment... comment){
+        if(this.comments == null){
+            this.comments = new ArrayList<>();
+        }
+        this.comments.addAll(Arrays.asList(comment));
+        /*or
+         * for(Comment c : comment){
+         *    this.comments.add(c);
+         *   }
+         */
+
+
+
+    }
 }
 

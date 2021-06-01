@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+
+    <link rel="stylesheet" th:href="@{/asset/css/styles/nav.css}">
+    <link rel="stylesheet" th:href="@{/asset/css/styles/footer.css}">
+    <link rel="stylesheet" th:href="@{/asset/css/media-query/footer.css}">
+    <link rel="stylesheet" th:href="@{/asset/css/media-query/nav.css}">
+    <link rel="stylesheet" th:href="@{../css/media-query/style.css}">
+    <link rel="stylesheet" th:href="@{/asset/css/styles/post.css}">
+    <link rel="stylesheet" th:href="@{/asset/css/media-query/post.css}">
+    <link rel="stylesheet" th:href="@{/asset/css/styles/create.css}">
+    <script src="https://kit.fontawesome.com/e2052a1ca7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+        <!-- Navigation   -->
+     <nav>
+        <div class="logo">
+            <a href="/posts/">
+                <h1>PentaBlog</h1>
+            </a>
+            <div class="toggle">
+                <button>
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <ul class="links">
+            <li><a href="/posts/">Home</a></li>
+            <li><a href="/posts/create">Create A Post</a></li>
+        </ul>
+    </nav>
+    <!-- Navigation end   -->
+
+
+     <!--Form-->
+     <form action="/posts/save" method="post" enctype="multipart/form-data" th:object="${post}">
+        <h2>Create a Blog Post</h2>
+         <div class = "mb-3">
+             <label for="formFile" class="form-label">Cover Image</label>
+             <input class="form-control" th:field="*{coverImageUrl}" type="file" id="formFile">
+         </div>
+
+         <label for="text"></label>
+         <input type="text"  name="text"  id="text" th:field="*{title}" placeholder="Enter your Post Here">
+
+         <label for="message"></label>
+         <textarea  name="message" id="message" th:field="*{content}" cols="30" rows="10" placeholder="Post content here..."></textarea>
+
+        <input type="submit" value="Publish Post"/>
+    </form> 
+<!-- Form
+  
+        <Footer -->
+        <footer>
+            <div class="footer-flex">
+                <div class="footer-item studio">
+                    <h3>PentaBlog Studio</h3>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut
+                        labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    <p>Copyright © 2021 Your Company - Design: Whalewalker </p>
+                </div>
+                <div class="footer-item">
+                    <h3>Talk to us</h3>
+                    <p> 312 Delicious Street, San Francisco, CA 10880</p>
+                    <p>09075617573</p>
+                    <p>ohida@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <button>
+                    <a href="#" class="fa fa-facebook"></a>
+                </button>
+                <button><a href="#" class="fa fa-twitter"></a></button>
+                <button>
+                    <a href="#" class="fa fa-google-plus"></a>
+                </button>
+                <button><a href="#" class="fa fa-dribbble"></a></button>
+                <button><a href="#" class="fa fa-linkedin"></a></button>
+            </div>
+        </footer>
+        <!-- Footer -->
+
+
+    <!-- Navigation   -->
+    
+
+    <!-- Scripts -->
+    <script src="../static/asset/scripts/app.js"></script>
+</body>
+
+</html>
