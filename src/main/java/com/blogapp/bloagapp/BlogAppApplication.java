@@ -23,7 +23,6 @@ public class BlogAppApplication {
 				"cloud_name", cloudinaryConfig.getCloudName(),
 				"api_key", cloudinaryConfig.getApiKey(),
 				"api_secret", cloudinaryConfig.getApiSecret()));
-
 	}
 
 }

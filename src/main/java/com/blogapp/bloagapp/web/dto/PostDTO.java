@@ -1,10 +1,8 @@
 package com.blogapp.bloagapp.web.dto;
 
 import lombok.Data;
-import lombok.NonNull;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
 @Data

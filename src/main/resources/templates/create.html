@@ -20,30 +20,19 @@
 <body>
 
         <!-- Navigation   -->
-     <nav>
-        <div class="logo">
-            <a href="/posts/">
-                <h1>PentaBlog</h1>
-            </a>
-            <div class="toggle">
-                <button>
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-        <ul class="links">
-            <li><a href="/posts/">Home</a></li>
-            <li><a href="/posts/create">Create A Post</a></li>
-        </ul>
-    </nav>
+        <nav th:insert = "/fragments.html :: topnav"></nav>
     <!-- Navigation end   -->
 
 
      <!--Form-->
-     <form action="/posts/save" method="post" enctype="multipart/form-data" th:object="${post}">
+     <form action="/save" method="post" enctype="multipart/form-data" th:object="${post}">
         <h2>Create a Blog Post</h2>
-         <div class = "mb-3">
+
+         <div class="alert alert-danger" th:if="${error}" role="alert">
+             <span th:text="${errorMessage}"></span>
+         </div>
+
+         <div class = "col-12">
              <label for="formFile" class="form-label">Cover Image</label>
              <input class="form-control" th:field="*{coverImageUrl}" type="file" id="formFile">
          </div>
@@ -55,39 +44,11 @@
          <textarea  name="message" id="message" th:field="*{content}" cols="30" rows="10" placeholder="Post content here..."></textarea>
 
         <input type="submit" value="Publish Post"/>
-    </form> 
+    </form>
 <!-- Form
   
         <Footer -->
-        <footer>
-            <div class="footer-flex">
-                <div class="footer-item studio">
-                    <h3>PentaBlog Studio</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                    <p>Copyright © 2021 Your Company - Design: Whalewalker </p>
-                </div>
-                <div class="footer-item">
-                    <h3>Talk to us</h3>
-                    <p> 312 Delicious Street, San Francisco, CA 10880</p>
-                    <p>09075617573</p>
-                    <p>ohida@gmail.com</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <button>
-                    <a href="#" class="fa fa-facebook"></a>
-                </button>
-                <button><a href="#" class="fa fa-twitter"></a></button>
-                <button>
-                    <a href="#" class="fa fa-google-plus"></a>
-                </button>
-                <button><a href="#" class="fa fa-dribbble"></a></button>
-                <button><a href="#" class="fa fa-linkedin"></a></button>
-            </div>
-        </footer>
+        <footer th:insert="/fragments.html :: footer "></footer>
         <!-- Footer -->
 
 
@@ -96,6 +57,7 @@
 
     <!-- Scripts -->
     <script src="../static/asset/scripts/app.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </body>
 
 </html>

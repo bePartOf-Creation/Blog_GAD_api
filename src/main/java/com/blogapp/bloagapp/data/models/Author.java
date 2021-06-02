@@ -3,6 +3,7 @@ import lombok.Data;
 import lombok.ToString;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Data
@@ -28,13 +29,13 @@ public class Author {
 
     @OneToMany//
     @ToString.Exclude// To avoid duplicate the invocation of toString methods of each object
-    // in the bi-directional relationship
     private List<Post> posts;
-    public void addPost(Post post) {
+    // in the bi-directional relationship
+    public void addPost(Post... post) {
         if (posts == null) {
             posts = new ArrayList<>();
         }
-        posts.add(post);
+        this.posts.addAll(Arrays.asList(post));
     }
 
 }
