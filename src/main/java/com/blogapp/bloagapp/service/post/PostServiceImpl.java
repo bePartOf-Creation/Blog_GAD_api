@@ -1,23 +1,25 @@
 package com.blogapp.bloagapp.service.post;
 
+
+
 import com.blogapp.bloagapp.data.models.Comment;
 import com.blogapp.bloagapp.data.models.Post;
 import com.blogapp.bloagapp.data.repository.PostRepository;
 import com.blogapp.bloagapp.service.cloud.CloudStorageService;
 import com.blogapp.bloagapp.web.dto.PostDTO;
+import com.blogapp.bloagapp.web.exceptions.PostDoesNotFoundException;
 import com.blogapp.bloagapp.web.exceptions.PostObjectIsNullException;
 import com.cloudinary.utils.ObjectUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -47,8 +49,7 @@ public class PostServiceImpl implements PostService{
               Map<?,?> uploadResult =
                 cloudStorageService.uploadImage(postDTO.getCoverImageUrl(),
                         ObjectUtils.asMap(
-                                "public_id","blogapp/"+postDTO.getCoverImageUrl().getName(),
-                                "overwrite", true
+                                "public_id","blogapp/"+extractFileName(Objects.requireNonNull(postDTO.getCoverImageUrl().getOriginalFilename()))
                         ));
               post.setCoverImageUrl(String.valueOf(uploadResult.get("url")));
               log.info("Image url --> {}", uploadResult.get("url"));
@@ -80,8 +81,16 @@ public class PostServiceImpl implements PostService{
         return null;
     }
     @Override
-    public Post findById(Integer id) {
-        return null;
+    public Post findById(Integer id) throws PostDoesNotFoundException {
+           if(Objects.equals(id, null)){
+               throw  new NullPointerException("Post Id cannot Be Null");
+           }
+            Optional<Post> post = postRepository.findById(id);
+            if(post.isPresent()){
+                return post.get();
+            }else{
+                throw new PostDoesNotFoundException("Post with Id --> {}");
+            }
     }
 
     @Override
@@ -92,5 +101,14 @@ public class PostServiceImpl implements PostService{
     @Override
     public Post addCommentToPost(Integer id, Comment comment) {
         return null;
+    }
+
+    @Override
+    public List<Post> findPostInDescOrder() {
+        return postRepository.findByOrderByDateCreatedDesc();
+    }
+
+    private String extractFileName(String fileName){
+        return fileName.split("\\.")[0];
     }
 }

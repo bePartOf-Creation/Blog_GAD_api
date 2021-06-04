@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Post</title>
 
-    <link rel="stylesheet" th:href="@{/asset/css/styles/nav.css}">
+    <link rel="stylesheet" th:href="@{asset/css/styles/nav.css}">
     <link rel="stylesheet" th:href="@{/asset/css/styles/footer.css}">
     <link rel="stylesheet" th:href="@{/asset/css/media-query/footer.css}">
     <link rel="stylesheet" th:href="@{/asset/css/media-query/nav.css}">
-    <link rel="stylesheet" th:href="@{../css/media-query/style.css}">
+    <link rel="stylesheet" th:href="@{/asset/css/media-query/style.css}">
     <link rel="stylesheet" th:href="@{/asset/css/styles/post.css}">
     <link rel="stylesheet" th:href="@{/asset/css/media-query/post.css}">
     <link rel="stylesheet" th:href="@{/asset/css/styles/create.css}">
@@ -38,9 +38,11 @@
          </div>
 
          <label for="text"></label>
+         <span class="alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
          <input type="text"  name="text"  id="text" th:field="*{title}" placeholder="Enter your Post Here">
 
          <label for="message"></label>
+         <span class="alert alert-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
          <textarea  name="message" id="message" th:field="*{content}" cols="30" rows="10" placeholder="Post content here..."></textarea>
 
         <input type="submit" value="Publish Post"/>

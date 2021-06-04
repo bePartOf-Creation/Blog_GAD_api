@@ -87,6 +87,7 @@ form input:not(input[type="submit"]), textarea{
 input[type="submit"]{
     display: block;
     margin-top: 1.54rem;
+    margin-bottom: 1rem;
     padding: 1rem 1.5rem;
     background-color: transparent;
     border-radius: 25px;

@@ -43,10 +43,10 @@
     <!--    Blog post-->
     <div id="blog" class="blog-post-container">
         <div class="blog-post" th:each="post : ${postList}">
-            <a href="./asset/pages/post.html" class="img-container">
+            <a th:href="@{/posts/single/{id}(id = ${post.id})}" class="img-container">
                 <img th:src="${post.coverImageUrl}" alt="blog-img">
             </a>
-            <a href="./asset/pages/post.html" class="post-title" th:text="${post.title}"></a>
+            <a th:href="@{/posts/single/{id}(id = ${post.id})}" class="post-title" th:text="${post.title}"></a>
             <div class="blog-post-detail">
                 <a class="user-detail">
                     <img src="asset/images/author-image1.jpg" class="user-profile">
@@ -63,11 +63,13 @@
             <div class="post-content">
                 <p th:text="${post.content}"></p>
             </div>
-            <a href="/asset/pages/post.html">
-                <button class="view-post">
-                    continue reading
-                </button>
-            </a>
+            <a th:href="@{/posts/single/{id}(id = ${post.id})}" >
+                    <button class="view-post" >
+                        continue reading
+                    </button>
+                </a>
+
+
         </div>
 
         <div class="diff"></div>

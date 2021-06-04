@@ -42,7 +42,6 @@ class PostServiceImplTest {
         postServiceImpl.savePost(new PostDTO());
 
         verify(postRepository, times(1)).save(testPost);
-
     }
     @Test
     void whenTheSaveFindAllMethodIsCalled_thenReturnAListOfPostsTest() {
@@ -51,6 +50,5 @@ class PostServiceImplTest {
         postServiceImpl.findAllPosts();
 
         verify(postRepository, times(1)).findAll();
-
     }
 }
