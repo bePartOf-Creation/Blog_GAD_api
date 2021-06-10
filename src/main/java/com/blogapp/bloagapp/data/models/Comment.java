@@ -22,7 +22,6 @@ public class Comment {
     @Column(nullable = false, length= 150)
     private String content;
 
-
     public Comment(String authorName, String content){
         this.authorName = authorName;
         this.content = content;

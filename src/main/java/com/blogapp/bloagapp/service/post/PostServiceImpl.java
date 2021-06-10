@@ -1,7 +1,5 @@
 package com.blogapp.bloagapp.service.post;
 
-
-
 import com.blogapp.bloagapp.data.models.Comment;
 import com.blogapp.bloagapp.data.models.Post;
 import com.blogapp.bloagapp.data.repository.PostRepository;
@@ -36,9 +34,7 @@ public class PostServiceImpl implements PostService{
         if(postDTO == null){
             throw new PostObjectIsNullException();
         }
-
         Post post = new Post();
-
         if(postDTO.getCoverImageUrl() != null && !postDTO.getCoverImageUrl().isEmpty()) {
 //            Map<Object,Object> params = new HashMap<>();
 //            params.put("public_id","blogapp/"+postDTO.getCoverImageUrl().getName());
@@ -57,7 +53,7 @@ public class PostServiceImpl implements PostService{
                 e.printStackTrace();
             }
         }
-        //
+
         post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
         log.info("Post object after saving --> {}",post);
