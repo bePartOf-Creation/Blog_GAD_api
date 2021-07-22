@@ -6,14 +6,12 @@ import com.blogapp.bloagapp.web.dto.PostDTO;
 import com.blogapp.bloagapp.web.exceptions.PostDoesNotFoundException;
 import com.blogapp.bloagapp.web.exceptions.PostObjectIsNullException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import javax.validation.Valid;
 import java.util.List;
