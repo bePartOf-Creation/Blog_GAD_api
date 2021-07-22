@@ -19,38 +19,35 @@
 
 <body>
     <div class="header">
-    <nav th:insert="fragments.html :: topnav">
+        <nav th:insert="fragments.html :: topnav"></nav>
+        <!-- Navigation end   -->
 
-    </nav>
-    <!-- Navigation end   -->
-
-    <!-- Header section -->
-    <header id="back-top">
-        <h1>Hello! This is PentaBlog.</h1>
-        <div class="flag">
-            <p>The </p>
-            <img src="./asset/images/amazone.png">
-            <p>of semicolon africa</p>
-        </div>
-        <a href="#blog">
-            <button>Discover more</button>
-        </a>
-
-    </header>
-    <!-- Header section end -->
-</div>
+        <!-- Header section -->
+        <header id="back-top">
+            <h1>Hello! This is PentaBlog.</h1>
+            <div class="flag">
+                <p>The </p>
+                <img src="./asset/images/amazone.png">
+                <p>of semicolon africa</p>
+            </div>
+            <a href="#blog">
+                <button>Discover more</button>
+            </a>
+        </header>
+        <!-- Header section end -->
+    </div>
 
     <!--    Blog post-->
     <div id="blog" class="blog-post-container">
         <div class="blog-post" th:each="post : ${postList}">
             <a th:href="@{/posts/single/{id}(id = ${post.id})}" class="img-container">
-                <img th:src="${post.coverImageUrl}" alt="blog-img">
+                <img th:src="${post.coverImageUrl}" alt="blog-img" src="">
             </a>
             <a th:href="@{/posts/single/{id}(id = ${post.id})}" class="post-title" th:text="${post.title}"></a>
             <div class="blog-post-detail">
                 <a class="user-detail">
-                    <img src="asset/images/author-image1.jpg" class="user-profile">
-                    <a href="" class="user-name">Jen Lopez</a>
+                    <img th:src="${post.coverImageUrl}" class="user-profile" alt="">
+                    <a href="" class="user-name" th:text="*{post.author}"></a>
                 </a>
 
                 <p class="date-published" th:text="${post.dateCreated}"></p>

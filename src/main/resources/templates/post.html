@@ -1,8 +1,8 @@
     <!DOCTYPE html>
     <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-    <head>
+    <head th:object="${postInfo}">
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title th:text="*{title}"></title>
         <link rel="stylesheet" th:href="@{/asset/css/styles/nav.css}">
         <link rel="stylesheet" th:href="@{/asset/css/styles/footer.css}">
         <link rel="stylesheet" th:href="@{/asset/css/media-query/footer.css}">
@@ -23,7 +23,7 @@
         <!-- Navigation end   -->
 
         <!-- Post Container -->
-        <div class="post-header" >
+        <div class="post-header"  th:style="'background-image:url(' + *{coverImageUrl} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
             <h1 th:text="*{title}"></h1>
         </div>
         <!-- Post Container end -->
@@ -36,7 +36,7 @@
                 <div class="blog-post-detail">
                     <a class="user-detail">
                         <img th:src="*{coverImageUrl}" class="user-profile"  alt="" src=""/>
-                        <a href="" class="user-name">Jen Lopez</a>
+                        <a href="" class="user-name" th:text="*{author}"></a>
                     </a>
 
                     <p class="date-published" th:text="*{dateCreated}"> July 22, 2017</p>

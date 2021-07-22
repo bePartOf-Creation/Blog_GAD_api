@@ -53,14 +53,10 @@ public class PostServiceImpl implements PostService{
                 e.printStackTrace();
             }
         }
-
         post.setTitle(postDTO.getTitle());
         post.setContent(postDTO.getContent());
         log.info("Post object after saving --> {}",post);
-//        ModelMapper modelMap = new ModelMapper();
-//        modelMap.map(postDTO, post);
-//
-//        log.info("Post object after mapping --> {}",post);
+
         try {
             return postRepository.save(post);
         }catch (DataIntegrityViolationException ex){
@@ -96,6 +92,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public Post addCommentToPost(Integer id, Comment comment) {
+//        Optional<Post> find
         return null;
     }
 
@@ -107,4 +104,11 @@ public class PostServiceImpl implements PostService{
     private String extractFileName(String fileName){
         return fileName.split("\\.")[0];
     }
+
+
+    //
+    //    ModelMapper modelMap = new ModelMapper();
+//        modelMap.map(postDTO, post);
+//
+//        log.info("Post object after mapping --> {}",post);
 }

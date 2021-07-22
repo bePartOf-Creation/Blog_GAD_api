@@ -14,13 +14,17 @@
     <link rel="stylesheet" th:href="@{/asset/css/styles/post.css}">
     <link rel="stylesheet" th:href="@{/asset/css/media-query/post.css}">
     <link rel="stylesheet" th:href="@{/asset/css/styles/create.css}">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+
     <script src="https://kit.fontawesome.com/e2052a1ca7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
         <!-- Navigation   -->
-        <nav th:insert="fragments.html :: topnav"></nav>
+        <nav th:insert="fragments.html :: topnav">
+
+        </nav>
     <!-- Navigation end   -->
 
 
@@ -32,9 +36,10 @@
              <span th:text="${errorMessage}"></span>
          </div>
 
-         <div class = "col-12">
-             <label for="formFile" class="form-label">Cover Image</label>
-             <input class="form-control" th:field="*{coverImageUrl}" type="file" id="formFile">
+         <div class = "form-group">
+             <label for="formFile" class="form-label" id="image"> Upload your Cover Image</label>
+             <span class="alert alert-danger" th:if="${#fields.hasErrors('coverImageUrl')}" th:errors="*{coverImageUrl}"></span>
+             <input class="form-control" th:field="*{coverImageUrl}" type="file" id="formFile" placeholder="Upload an Image...">
          </div>
 
          <label for="text"></label>
@@ -48,18 +53,24 @@
         <input type="submit" value="Publish Post"/>
     </form>
 <!-- Form
-  
+
         <Footer -->
-        <footer th:insert="fragments.html :: footer "></footer>
+        <footer th:insert="fragments.html :: footer">
+
+        </footer>
         <!-- Footer -->
 
 
     <!-- Navigation   -->
-    
+
 
     <!-- Scripts -->
-    <script src="../static/asset/scripts/app.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="../static/asset/scripts/app.js">
+
+
+    </script>
+        <!-- JavaScript Bundle with Popper -->
+
 </body>
 
 </html>
