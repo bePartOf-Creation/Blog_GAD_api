@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.multipart.MultipartFile;
 
 @SpringBootApplication
 public class BlogAppApplication {
@@ -17,6 +18,7 @@ public class BlogAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BlogAppApplication.class, args);
 	}
+
 	@Bean
 	public Cloudinary getCloudinary(){
 		return  new Cloudinary(ObjectUtils.asMap(
@@ -24,5 +26,7 @@ public class BlogAppApplication {
 				"api_key", cloudinaryConfig.getApiKey(),
 				"api_secret", cloudinaryConfig.getApiSecret()));
 	}
+
+
 
 }

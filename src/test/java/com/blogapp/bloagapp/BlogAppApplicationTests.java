@@ -20,6 +20,8 @@ class BlogAppApplicationTests {
 	DataSource dataSource;
 
 
+
+
 	@Test
 	void applicationCanConnectToDatabaseTest(){
 		assertThat(dataSource).isNotNull();

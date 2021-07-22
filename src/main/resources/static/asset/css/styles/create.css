@@ -17,6 +17,15 @@ form h2{
     font-family: var(--header-font);
 }
 
+#image{
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+}
+#formFile{
+    width: 750px;
+}
 @media only screen and (max-width: 1000px) {
     form{
         width: 80%;
