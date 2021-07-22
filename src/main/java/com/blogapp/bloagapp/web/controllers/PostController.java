@@ -46,7 +46,7 @@ public class PostController {
     public String getPostForm(Model model){
 //        model.addAttribute("post", new PostDTO());//"post" is the variable to be used in the html template,while "PostDTo" is used to accept the user data wit its information.
         model.addAttribute("error",false);
-        return "/create";
+        return "create";
     }
     @PostMapping("/save")
     public String savePost(@ModelAttribute("post") @Valid PostDTO postDTO,
