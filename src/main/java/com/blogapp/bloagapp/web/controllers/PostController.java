@@ -53,7 +53,7 @@ public class PostController {
                            BindingResult result, Model model){//@ModelAttribute request for data from the  "Model args" from "/create" api
         log.info("Post dto received --> {}",postDTO);
         if(result.hasErrors()){
-            return "create";
+            return "/create";
         }
         try{
             postServiceImpl.savePost(postDTO);
