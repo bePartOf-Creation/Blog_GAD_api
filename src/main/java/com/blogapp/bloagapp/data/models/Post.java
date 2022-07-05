@@ -5,10 +5,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -41,6 +41,7 @@ public class Post {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comments;
 
+   
 
     public void addComments(Comment... comment){
         if(this.comments == null){

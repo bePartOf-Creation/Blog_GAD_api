@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
+
+
 //    @GetMapping("/")
 //    public @ResponseBody  String showWelcome(){
 //        return "Welcome to Pentax!!!!";
