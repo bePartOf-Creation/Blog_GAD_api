@@ -44,13 +44,14 @@ public class PostController {
     }
     @GetMapping("/create")
     public String getPostForm(Model model){
-//        model.addAttribute("post", new PostDTO());//"post" is the variable to be used in the html template,while "PostDTo" is used to accept the user data wit its information.
+//        model.addAttribute("post", new PostDTO());//"post" is the variable to be used in the html template,
+//        while "PostDTo" is used to accept the user data with its information.
         model.addAttribute("error",false);
         return "create";
     }
     @PostMapping("/save")
     public String savePost(@ModelAttribute("post") @Valid PostDTO postDTO,
-                           BindingResult result, Model model){//@ModelAttribute request for data from the  "Model args" from "/create" api
+                           BindingResult result, Model model){//@ModelAttribute requests for data from the  "Model args" from "/create" api
         log.info("Post dto received --> {}",postDTO);
         if(result.hasErrors()){
             return "create";
@@ -62,7 +63,7 @@ public class PostController {
         }catch (DataIntegrityViolationException dx){
             model.addAttribute("error",true);// when duplicate title occur, show this text
             model.addAttribute("errorMessage","Title Not Excepted, Already Exist");// when duplicate title occurs, show this text{customized message}
-//            model.addAttribute("postDto",new PostDTO());//when duplicate title occurs,return back the form wit empty PostDTo
+//            model.addAttribute("postDto",new PostDTO());//when duplicate title occurs,return the form wit empty PostDTo
            return "create";
         }
         return  "redirect:/posts";

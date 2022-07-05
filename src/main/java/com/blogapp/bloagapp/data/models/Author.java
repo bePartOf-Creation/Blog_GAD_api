@@ -20,7 +20,7 @@ public class Author {
     private String lastName;
 
     private String profession;
-
+ 
     @Column(unique = true)// after adding a new constraints to an existing column, kindly change your ddl auto --> {create}
     //Run Your Test, and the change it back to {update}.
     private String email;
